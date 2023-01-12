@@ -1,0 +1,12 @@
+{
+  "name": "@marmot/consensus-app-types",
+  "version": "1.0.0",
+  "description": "",
+  "types": "index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Holden Marsh",
+  "license": "ISC",
+  "registry": "https://registry.npmjs.org/"
+}

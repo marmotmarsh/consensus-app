@@ -3,7 +3,7 @@ import { defineComponent } from 'vue';
 import type { Editor } from '@tiptap/vue-3';
 import StarterKit from '@tiptap/starter-kit';
 
-import type { IProposal } from '../types';
+import type { IProposal } from '../../../types';
 import TipTap from '@/components/TipTap.vue';
 
 export default defineComponent({
