@@ -1,6 +1,7 @@
 import * as bodyParser from 'body-parser';
 import * as express from 'express';
 import { Logger } from '../logger/logger';
+import Proposal from './proposal';
 import User from './user';
 
 class Routes {
@@ -24,8 +25,8 @@ class Routes {
   }
 
   private routes(): void {
-    // user route
-    this.express.use('/', User);
+    // proposal route
+    this.express.use('/', Proposal);
   }
 }
 
