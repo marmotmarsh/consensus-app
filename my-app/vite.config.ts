@@ -18,4 +18,18 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
+  server: {
+    proxy: {
+      '^/api': {
+        target: 'http://localhost:5273',
+        changeOrigin: true,
+        secure: false,
+        // ws: true,
+        // rewrite: (path) => {
+        //   console.log('What is', path);
+        //   return path.replace(/^\/api/, '');
+        // },
+      },
+    },
+  },
 });
