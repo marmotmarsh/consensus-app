@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
 import HomeView from '../views/HomeView.vue';
-import NewProposal from '@/views/NewProposalView.vue';
-import ConsensusBasics from '@/views/ConsensusBasicsView.vue';
+import NewProposalView from '@/views/NewProposalView.vue';
+import ConsensusBasicsView from '@/views/ConsensusBasicsView.vue';
 import { CONSENSUS_BASICS_ROUTE, NEW_PROPOSAL_ROUTE } from '@/const';
 
 const router = createRouter({
@@ -24,12 +24,12 @@ const router = createRouter({
     {
       path: NEW_PROPOSAL_ROUTE,
       name: 'new',
-      component: NewProposal,
+      component: NewProposalView,
     },
     {
       path: CONSENSUS_BASICS_ROUTE,
       name: 'consensus',
-      component: ConsensusBasics,
+      component: ConsensusBasicsView,
     },
   ],
 });

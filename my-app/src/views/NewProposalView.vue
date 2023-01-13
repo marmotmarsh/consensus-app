@@ -1,78 +1,42 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
-import type { Editor } from '@tiptap/vue-3';
-import StarterKit from '@tiptap/starter-kit';
 
-import type { IProposal } from '../../../types';
-import TipTap from '@/components/TipTap.vue';
+import ProposalForm from '@/components/ProposalForm.vue';
+import type { INewProposal } from '../../../types';
+import { createProposal } from '@/services';
+
+interface ProposalData {
+  proposal: INewProposal;
+}
 
 export default defineComponent({
   data() {
-    const proposal: IProposal = {
+    const proposal: INewProposal = {
       title: '',
       description: '',
       name: '',
       email: '',
     };
-
-    return {
-      proposal,
-      editor: {} as Editor,
-    };
+    return { proposal };
   },
-  props: ['proposal'],
-
   components: {
-    TipTap,
+    ProposalForm,
   },
 
   methods: {
-    onSubmit(event: any): void {
-      event.preventDefault();
-      alert(JSON.stringify(this.proposal));
+    createProposal(data: ProposalData) {
+      console.log('data:::', data.proposal);
+      createProposal(data.proposal).then((response) => {
+        console.log(response);
+      });
     },
   },
 });
 </script>
 
 <template>
-  <div class="container">
-    <b-card>
-      <b-form @submit="onSubmit">
-        <b-form-group>
-          <b-form-input
-            id="input-title"
-            v-model="proposal.title"
-            placeholder="Proposal Title"
-            required
-          />
-        </b-form-group>
-        <b-form-group>
-          <tip-tap />
-        </b-form-group>
-        <b-form-group>
-          <b-form-input
-            id="input-name"
-            v-model="proposal.name"
-            placeholder="Your Name (Optional)"
-            required
-          />
-        </b-form-group>
-        <b-form-group>
-          <b-form-input
-            id="input-email"
-            v-model="proposal.email"
-            placeholder="Your Email (Optional)"
-            type="email"
-          />
-        </b-form-group>
-        <b-button
-          type="submit"
-          variant="primary"
-        >
-          Submit
-        </b-button>
-      </b-form>
-    </b-card>
-  </div>
+  <ProposalForm
+    :proposal="proposal"
+    @submitProposal="createProposal($event)"
+  />
 </template>
