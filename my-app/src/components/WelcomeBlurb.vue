@@ -20,7 +20,7 @@ export default defineComponent({});
           class="btn btn-success btn-large"
           href="/new"
         >
-          Create a Old Proposal
+          Create a New Proposal
         </b-button>
       </p>
       <p>
