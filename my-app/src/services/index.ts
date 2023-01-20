@@ -1,18 +1,21 @@
-import type { IProposal, INewProposal } from '../../../types';
+import type { Proposal, NewProposal } from '../../../types';
 
-export async function createProposal(
-  proposal: INewProposal
-): Promise<IProposal> {
+export async function createProposal(proposal: NewProposal): Promise<Proposal> {
   console.log('Attempting to create Proposal');
   const response = await fetch(`/api/proposal/create`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ proposal }),
+    body: JSON.stringify({
+      ...proposal,
+      userId: proposal.userId || null,
+      userName: proposal.userName || null,
+      email: proposal.email || null,
+    }),
   });
   return await response.json();
 }
 
-export async function updateProposal(proposal: IProposal): Promise<IProposal> {
+export async function updateProposal(proposal: Proposal): Promise<Proposal> {
   const response = await fetch(`/api/proposal/update`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -21,7 +24,7 @@ export async function updateProposal(proposal: IProposal): Promise<IProposal> {
   return await response.json();
 }
 
-export async function getProposal(id: string): Promise<IProposal> {
+export async function getProposal(id: string): Promise<Proposal> {
   const response = await fetch('/api/get-proposal');
   return await response.json();
 }
