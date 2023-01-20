@@ -2,20 +2,21 @@
 import { defineComponent } from 'vue';
 
 import ProposalForm from '@/components/ProposalForm.vue';
-import type { INewProposal } from '../../../types';
+import type { NewProposal } from '../../../types';
 import { createProposal } from '@/services';
 
 interface ProposalData {
-  proposal: INewProposal;
+  proposal: NewProposal;
 }
 
 export default defineComponent({
   data() {
-    const proposal: INewProposal = {
+    const proposal: NewProposal = {
       title: '',
       description: '',
-      name: '',
       email: '',
+      userName: '',
+      userId: '',
     };
     return { proposal };
   },

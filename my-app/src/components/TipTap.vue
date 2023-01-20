@@ -19,6 +19,13 @@ export default defineComponent({
     };
   },
 
+  props: {
+    updateDescription: {
+      type: Function,
+      required: true,
+    },
+  },
+
   mounted() {
     this.editor = new Editor({
       content: '',
@@ -32,6 +39,9 @@ export default defineComponent({
         Text,
         Underline,
       ],
+      onUpdate: ({ editor }) => {
+        this.updateDescription(editor.getHTML());
+      },
     });
   },
 

@@ -3,18 +3,18 @@ import { defineComponent } from 'vue';
 import type { PropType } from 'vue';
 import type { Editor } from '@tiptap/vue-3';
 
-import type { INewProposal } from '../../../types';
+import type { NewProposal } from '../../../types';
 import TipTap from '@/components/TipTap.vue';
 
 export default defineComponent({
   data() {
     return {
-      editor: {} as Editor,
+      proposalDescription: '',
     };
   },
   props: {
     proposal: {
-      type: Object as PropType<INewProposal>,
+      type: Object as PropType<NewProposal>,
       required: true,
     },
   },
@@ -27,10 +27,18 @@ export default defineComponent({
     submitProposal() {
       console.log(this.proposal.title);
       const payload = {
-        proposal: this.proposal,
+        proposal: {
+          ...this.proposal,
+          description: this.proposalDescription,
+        },
       };
       this.$emit('submitProposal', payload);
       // TODO: this.clearForm();
+    },
+    updateDescription(newDesc: string) {
+      if (newDesc !== this.proposalDescription) {
+        this.proposalDescription = newDesc;
+      }
     },
   },
 });
@@ -49,12 +57,12 @@ export default defineComponent({
           />
         </b-form-group>
         <b-form-group>
-          <tip-tap />
+          <tip-tap :update-description="updateDescription" />
         </b-form-group>
         <b-form-group>
           <b-form-input
             id="input-name"
-            v-model="proposal.name"
+            v-model="proposal.userName"
             placeholder="Your Name (Optional)"
             required
           />
