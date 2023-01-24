@@ -1,8 +1,10 @@
 import type { Proposal, NewProposal } from '../../../types';
 
+const URL = process.env.API_URL;
+
 export async function createProposal(proposal: NewProposal): Promise<Proposal> {
   console.log('Attempting to create Proposal');
-  const response = await fetch(`/api/proposal/create`, {
+  const response = await fetch(`${URL}/proposals/create`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -16,7 +18,7 @@ export async function createProposal(proposal: NewProposal): Promise<Proposal> {
 }
 
 export async function updateProposal(proposal: Proposal): Promise<Proposal> {
-  const response = await fetch(`/api/proposal/update`, {
+  const response = await fetch(`${URL}/proposals/update`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ proposal }),
