@@ -1,6 +1,7 @@
 import type { Proposal, NewProposal } from '../../../types';
 
-const URL = process.env.API_URL;
+// TODO: Maybe find a way to not hardcode this
+const URL = 'https://iridescent-zabaione-10ddb8.netlify.app/.netlify/functions';
 
 export async function createProposal(proposal: NewProposal): Promise<Proposal> {
   console.log('Attempting to create Proposal');
