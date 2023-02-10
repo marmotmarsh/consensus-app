@@ -7,11 +7,7 @@ export async function createProposal(proposal: NewProposal): Promise<Proposal> {
   console.log('Attempting to create Proposal');
   const response = await fetch(`${URL}/proposals/create`, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'POST,PATCH,OPTIONS',
-    },
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       ...proposal,
       userId: proposal.userId || null,
