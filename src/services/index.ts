@@ -1,4 +1,4 @@
-import type { Proposal, NewProposal } from '../../../types';
+import type { Proposal, NewProposal } from '../../types';
 
 // TODO: Maybe find a way to not hardcode this
 const URL = 'https://iridescent-zabaione-10ddb8.netlify.app/.netlify/functions';

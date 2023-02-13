@@ -3,7 +3,7 @@ import { defineComponent } from 'vue';
 import type { PropType } from 'vue';
 import type { Editor } from '@tiptap/vue-3';
 
-import type { NewProposal } from '../../../types';
+import type { NewProposal } from '../../types';
 import TipTap from '@/components/TipTap.vue';
 
 export default defineComponent({

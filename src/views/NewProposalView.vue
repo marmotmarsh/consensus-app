@@ -2,7 +2,7 @@
 import { defineComponent } from 'vue';
 
 import ProposalForm from '@/components/ProposalForm.vue';
-import type { NewProposal } from '../../../types';
+import type { NewProposal } from '../../types';
 import { createProposal } from '@/services';
 
 interface ProposalData {
